@@ -51,15 +51,12 @@ static void pvr_init_tile_matrix(int which, int presort) {
 #endif
 
     /*
-        FIXME? Is this header necessary? If we're moving the tilematrix
-        register to after it, how does the Dreamcast know this is here?
+        FIXME? Is this init tile necessary? It seems to be, but I can't figure
+        out why from emulator code.
     */
 
     /* Header of zeros */
     vr += BYTES_TO_WORDS(buf->tile_matrix);
-
-    for(x = 0; x < 0x48; x += 4)
-        * vr++ = 0;
 
     /* Initial init tile */
     vr[0] = 0x10000000;
@@ -69,9 +66,6 @@ static void pvr_init_tile_matrix(int which, int presort) {
     vr[4] = 0x80000000;
     vr[5] = 0x80000000;
     vr += 6;
-
-    /* Must skip over zeroed header for actual usage */
-    buf->tile_matrix += 0x48;
 
     /* Now the main tile matrix */
 #if 0
