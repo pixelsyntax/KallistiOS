@@ -58,15 +58,6 @@ static void pvr_init_tile_matrix(int which, int presort) {
     /* Header of zeros */
     vr += BYTES_TO_WORDS(buf->tile_matrix);
 
-    /* Initial init tile */
-    vr[0] = 0x10000000;
-    vr[1] = 0x80000000;
-    vr[2] = 0x80000000;
-    vr[3] = 0x80000000;
-    vr[4] = 0x80000000;
-    vr[5] = 0x80000000;
-    vr += 6;
-
     /* Now the main tile matrix */
 #if 0
     dbglog(DBG_KDEBUG, "  Using poly buffers %08lx/%08lx/%08lx/%08lx/%08lx\r\n",
@@ -258,7 +249,7 @@ void pvr_allocate_buffers(pvr_init_params_t *params) {
 
         /* Tile Matrix */
         buf->tile_matrix = outaddr;
-        buf->tile_matrix_size = WORDS_TO_BYTES(18 + 6 * pvr_state.tw * pvr_state.th);
+        buf->tile_matrix_size = WORDS_TO_BYTES(6) * pvr_state.tw * pvr_state.th;
         outaddr += buf->tile_matrix_size;
 
         /* N-byte align */

@@ -154,7 +154,7 @@ void pvr_sync_reg_buffer() {
     PVR_SET(PVR_TA_OPB_END,     buf->opb - buf->opb_size);
     PVR_SET(PVR_TA_VERTBUF_START,   buf->vertex);
     PVR_SET(PVR_TA_VERTBUF_END, buf->vertex + buf->vertex_size);
-    PVR_SET(PVR_TA_OPB_INIT,    buf->opb);
+    PVR_SET(PVR_TA_OPB_INIT,    buf->opb - buf->opb_size);
 
     /* Misc config parameters */
     PVR_SET(PVR_TILEMAT_CFG,    pvr_state.tsize_const);     /* Tile count: (H/32-1) << 16 | (W/32-1) */
