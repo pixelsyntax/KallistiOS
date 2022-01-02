@@ -77,7 +77,7 @@ The packages below need to be installed to build the toolchains, so open the
 
 Additional packages are needed:
 
-	pacman -Sy git subversion python2
+	pacman -Sy git subversion mingw-w64-i686-python2
 
 **Git** is needed right now, as **Subversion Client** and **Python 2** will be
 needed only when building `kos-ports`. But it's better to install these now.
